@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Tus controles contra las caguamas del Tío Maxi. Cierra filas, cobra aguinaldos y gana medallas. Un juego navideño de Maxicenter.">
+<meta name="description" content="Tus controles contra las caguamas del Tío Maxi. Gánale y llévate tu cupón de descuento en Maxicenter. Un juego navideño.">
 <meta name="theme-color" content="#0b1030">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Duelo en la Posada · Maxicenter">
-<meta property="og:description" content="Tus controles contra las caguamas del Tío Maxi. Cierra filas, cobra aguinaldos y gana medallas. Un juego navideño de Maxicenter.">
+<meta property="og:description" content="Tus controles contra las caguamas del Tío Maxi. Gánale y llévate tu cupón de descuento en Maxicenter. Un juego navideño.">
 <meta property="og:image" content="https://maxicenter-juegos.github.io/og.jpg">
 <meta property="og:url" content="https://maxicenter-juegos.github.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -126,7 +126,26 @@ details summary::-webkit-details-marker{display:none}
 .cta a{display:block;text-decoration:none;color:#fff;font-weight:900;background:var(--green);border-radius:12px;padding:11px;box-shadow:0 4px 0 #0c6b31}
 .num{font-weight:900;user-select:text;-webkit-user-select:text}
 .tiny{font-size:13px;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){.bag{animation:none}.flt{animation-duration:.6s}}
+/* Cupones */
+.cups{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cup{position:relative;border-radius:14px;padding:10px 6px 8px;text-align:center;background:#0c1238;border:2px dashed var(--line);display:flex;flex-direction:column;gap:2px;align-items:center;min-height:96px;justify-content:center}
+.cup b{font-family:var(--f-disp);font-weight:400;font-size:30px;line-height:1;color:var(--line)}
+.cup span{font-size:12px;color:var(--muted);line-height:1.2}
+.cup.on{border:2px solid #fff4c8;background:linear-gradient(180deg,#ffe07a,var(--gold) 55%,#e3a21a);color:#3a2200;box-shadow:0 0 16px rgba(255,201,60,.45)}
+.cup.on b{color:#7a0009}.cup.on .cc{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;white-space:nowrap;letter-spacing:0}.cup.on span{color:#3a2200;font-weight:800}
+.cup.next{border-color:var(--gold);border-style:solid;animation:glow 1.6s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 18px rgba(255,201,60,.55)}}
+.ladder{font-size:14px;color:var(--muted);text-align:center;margin:0;line-height:1.35}
+.ladder b{color:var(--gold)}
+.coupon{border-radius:18px;padding:14px 12px;background:repeating-linear-gradient(135deg,#fff 0 14px,#fff6dc 14px 28px);color:#2a1600;border:3px dashed var(--red);display:flex;flex-direction:column;gap:6px;animation:cardin .5s cubic-bezier(.2,1.4,.4,1)}
+.coupon .pct{font-family:var(--f-disp);font-size:54px;line-height:.9;color:var(--red)}
+.coupon .pct small{display:block;font-size:18px;color:#2a1600;margin-top:4px}
+.coupon .lbl2{font-weight:900;font-size:15px}
+.coupon .code{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:900;font-size:24px;letter-spacing:.08em;background:#2a1600;color:#ffe07a;border-radius:10px;padding:6px 8px;user-select:text;-webkit-user-select:text}
+.coupon a{display:block;text-decoration:none;color:#fff;font-weight:900;font-size:17px;background:var(--green);border-radius:12px;padding:12px;box-shadow:0 4px 0 #0c6b31}
+.coupon .tiny{color:#6b4a1a}
+.near{font-weight:900;color:var(--gold)}
+@media (prefers-reduced-motion:reduce){.cup.next{animation:none}.bag{animation:none}.flt{animation-duration:.6s}}
 </style>
 </head>
 <body>
@@ -135,7 +154,7 @@ details summary::-webkit-details-marker{display:none}
 <section id="menu" style="display:flex;flex-direction:column;gap:14px">
   <div class="plate"><img src="data:image/png;base64,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" alt="Maxicenter, All that you want"></div>
   <h1>Duelo en la Posada</h1>
-  <p class="sub">Tus controles contra las caguamas del Tío. El que cierra la fila se lleva los puntos.</p>
+  <p class="sub">Tus controles contra las caguamas del Tío. Gánale y llévate tu <b style="color:var(--gold)">cupón de descuento</b>.</p>
 
   <div class="panel">
     <span class="lbl">Rival</span>
@@ -146,7 +165,7 @@ details summary::-webkit-details-marker{display:none}
     <div id="lvlBox" style="display:flex;flex-direction:column;gap:8px">
       <span class="lbl">¿Cómo viene el Tío?</span>
       <div class="chips" id="lvlChips">
-        <button class="chip" data-lvl="0" aria-pressed="true"><span>Crudo</span><small>con ayudas</small></button>
+        <button class="chip" data-lvl="0" aria-pressed="true"><span>Crudo</span><small id="lk0">cupón</small></button>
         <button class="chip" data-lvl="1" aria-pressed="false"><span>Alegrito</span><small id="lk1">con ayudas</small></button>
         <button class="chip" data-lvl="2" aria-pressed="false"><span>Prendido</span><small id="lk2">sin piedad</small></button>
       </div>
@@ -158,6 +177,12 @@ details summary::-webkit-details-marker{display:none}
     </div>
     <button class="big gold" id="resumeBtn" hidden>Continuar partida</button>
     <button class="big" id="startBtn">¡A jugar!</button>
+  </div>
+
+  <div class="panel">
+    <span class="lbl">Tus cupones</span>
+    <div class="cups" id="cups"></div>
+    <p class="ladder" id="ladder"></p>
   </div>
 
   <div class="panel">
@@ -180,6 +205,7 @@ details summary::-webkit-details-marker{display:none}
         <li>Las casillas con <b>regalo</b> hacen que sus filas valgan <b>doble</b>.</li>
         <li>Si cierras varias filas de golpe, cobras la más cara. Las demás quedan como <b>aguinaldos sueltos</b> (bolsitas doradas) y cualquiera puede cobrarlas gastando su turno.</li>
         <li>El turno siempre pasa. Ojo con dejarle al Tío una fila a una pieza de cerrarse.</li>
+        <li>Gánale al Tío en cada nivel y desbloqueas su <b>cupón</b>. Lo reclamas por WhatsApp con tu código.</li>
       </ul>
     </details>
   </div>
@@ -208,6 +234,14 @@ details summary::-webkit-details-marker{display:none}
     <div class="final"><span class="a" id="ovA">0</span> – <span class="b" id="ovB">0</span></div>
     <p id="ovP"></p>
     <div class="newmedal" id="ovMedal" hidden><span class="medal on">★</span><span id="ovMedalTxt"></span></div>
+    <div class="coupon" id="ovCup" hidden>
+      <span class="lbl2" id="ovCupT">¡Ganaste tu cupón!</span>
+      <span class="pct" id="ovCupP"></span>
+      <span class="code" id="ovCupC"></span>
+      <a id="ovCupWa" href="https://wa.me/523325074001" target="_blank" rel="noopener">Reclamar por WhatsApp</a>
+      <span class="tiny">Guarda tu código. Un cupón por persona en cada nivel. Pregunta condiciones por WhatsApp.</span>
+    </div>
+    <p class="near" id="ovNear" hidden></p>
     <div class="streak" id="ovStreak"></div>
     <button class="big gold" id="nextBtn" hidden>Siguiente: Tío Alegrito</button>
     <button class="big" id="rematchBtn">Otra, otra</button>
@@ -229,9 +263,17 @@ const $=s=>document.querySelector(s);
 const TIO="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAACe0lEQVR42r2Yv2vbQBTHv2eEJ5Ohg4cMjRCkCNNJYygdggeTsWTykH8hWyePnkKWdsyYQZPJUEIJxXQIwaPoEBzhFlWBkkHNoAhPJsQd2hMn6X7opFRvscXde/e590t3ItAUu7uxLjPPjxKiY5foLv7SeQcA+LHwpDrtZagFRcoAyBZnF8zLqmNm5siAiAxCtfv2MsSX1gvu2HmS4GPnMYVhdXhAhgxC5f4qsuqYsBGu8zCtJiGoRI+dQtIbdY2eJ8mzwJG63iiTrHmJ43sAQNdYpvlS8IhuSESLVfYIWyVNCN0wrSJCIZ5rZzoSx/dpeIhu6/4fkgGhMMOdV40BuLNFMVmpR3pmtzlXzBawuxvrQmjGwzfo7+3iLghxcDTh6p6+35faLqs39wMAwMi9gh8lJFO+LMTAsTDsO1lXTuWl7U49LmheLw+Rlm/eG00ICwMABoXo2VZh8mB0mnm+GB9knjctkwuu0qPSsy2Mh39hWiJiauz29wN3fNMyK+kJOyvrEdEORRB1wkhDMw8juLMFWn6UkJF7hbkf4PjkTLhTmbEqEN9+xZleUgjN8cmZ0tBdEGL6+Sv6e7uY+4E2EIWgv4WX3v7b1+lAvnTLeoGX9KIynlxei48BrBKFETUprnzyuI1M1YMMVYO68IJa/YJuYuBY1UGo7LTa1V8nTyslRAbEjxIyubzO5AkrH77fakMcbm8Jx9j84J7iCw3KsTB7WmWM3tz8VP4/3N4q7Q3uBStfPWmb9gKtEMkg8t7Quk6wRmUJTOcNSoZEGJp/uSJcSFVFsnERhPLuCwCiMJXxHAtQ+RLOO1SzUDwYFoL1au3PElU/0lT5UPMHWAlzuowMi00AAAAASUVORK5CYII=";
 
 /* ================= Progreso (por jugador, en su navegador) ================= */
+/* ===== CUPONES: cambia aquí el % de cada nivel (0 Crudo, 1 Alegrito, 2 Prendido). validar.html usa la misma tabla. ===== */
+const CUPON_PCT=[1,5,10];
+const CUP_AB="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",CUP_SAL="posada-maxi-24";
+function cupSum(l,r){let h=2166136261;for(const ch of "MX"+l+r+CUP_SAL){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)>>>0}return CUP_AB[h%32]+CUP_AB[(h>>>5)%32]}
+function cupCode(lvl){const l=lvl+1;let r="";const a=new Uint32Array(4);try{crypto.getRandomValues(a)}catch(e){for(let i=0;i<4;i++)a[i]=Math.random()*1e9}
+  for(let i=0;i<4;i++)r+=CUP_AB[a[i]%32];return `MX${l}-${r}-${cupSum(l,r)}`}
+function cupWa(lvl,code){return "https://wa.me/523325074001?text="+encodeURIComponent(`¡Hola Maxicenter! Le gané al Tío Maxi en el nivel ${LVL[lvl]} del Duelo en la Posada. Mi cupón es ${code} (${CUPON_PCT[lvl]}% de descuento). ¿Cómo lo uso?`)}
 const KEY="duelo_posada_v2";
-let P={medals:{},wins:0,streak:0,best:0};
+let P={medals:{},wins:0,streak:0,best:0,coupons:{},losses:{}};
 try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)P=Object.assign(P,s)}catch(e){}
+P.coupons=P.coupons||{};P.losses=P.losses||{};
 function saveP(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 const LVL=["Crudo","Alegrito","Prendido"],SHP={arbol:"Pino",mesa:"Mesa"};
 function hasLvl(l){return Object.keys(P.medals).some(k=>P.medals[k]&&k.endsWith("-"+l))}
@@ -240,9 +282,16 @@ function renderMenu(){
   {const d=loadGame();const rb=$("#resumeBtn");rb.hidden=!d;if(d)rb.textContent=`Continuar partida (${d.score[0]} – ${d.score[1]})`}
   const m=$("#medals");let h='<span></span>'+LVL.map(l=>`<span class="h">${l}</span>`).join("");
   for(const s of ["arbol","mesa"]){h+=`<span class="h" style="text-align:left">${SHP[s]}</span>`;for(let l=0;l<3;l++){const on=P.medals[s+"-"+l];h+=`<span class="medal${on?" on":""}" title="${SHP[s]} · ${LVL[l]}">${on?"★":"?"}</span>`}}
-  m.innerHTML=h;$("#stW").textContent=P.wins;$("#stS").textContent=P.streak;$("#stB").textContent=P.best;
+  m.innerHTML=h;
+  {let ch="",nxt=-1;for(let l=0;l<3;l++){const c=P.coupons[l];if(!c&&nxt<0)nxt=l;
+    ch+=c?`<a class="cup on" href="${cupWa(l,c.code)}" target="_blank" rel="noopener" style="text-decoration:none"><b>${CUPON_PCT[l]}%</b><span class="cc">${c.code}</span><span>Toca para reclamar</span></a>`
+      :`<div class="cup${l===nxt?" next":""}"><b>${CUPON_PCT[l]}%</b><span>${l===nxt?"Gánale al Tío "+LVL[l]:"🔒 Tío "+LVL[l]}</span></div>`}
+    $("#cups").innerHTML=ch;
+    $("#ladder").innerHTML=nxt<0?"¡Tienes los 3 cupones! Ahora ve por las 6 medallas.":`Siguiente: <b>${CUPON_PCT[nxt]}% de descuento</b> si le ganas al Tío ${LVL[nxt]}${nxt===0?". Está facilito.":nxt===2?". Aquí sí se pone bravo.":"."}`}
+  $("#stW").textContent=P.wins;$("#stS").textContent=P.streak;$("#stB").textContent=P.best;
+  $("#lk0").textContent=`cupón ${CUPON_PCT[0]}%`;
   for(let l=1;l<3;l++){const b=document.querySelector(`[data-lvl="${l}"]`),ok=unlocked(l);b.disabled=!ok;
-    $("#lk"+l).textContent=ok?(l===1?"con ayudas":"sin ayudas"):`🔒 gánale a ${LVL[l-1]}`;
+    $("#lk"+l).textContent=ok?`cupón ${CUPON_PCT[l]}%`:`🔒 gánale a ${LVL[l-1]}`;
     if(!ok&&S.lvl===l){S.lvl=0;setPressed("#lvlChips",'[data-lvl="0"]')}}
 }
 
@@ -265,9 +314,10 @@ function undo(g,u,p){if(u.m>=0){g.fill[u.m]=-1;g.empty++;for(const l of u.done){
 function negamax(g,d,p,a,b){if(d===0||(g.empty===0&&g.loose===0))return 0;let best=-1e9;
   for(const m of movesOf(g)){const u=apply(g,m,p);const v=u.gain-negamax(g,d-1,1-p,-b,-a);undo(g,u,p);if(v>best)best=v;if(best>a)a=best;if(a>=b)break}return best}
 function botMove(){const g=G,mv=movesOf(g),lvl=S.lvl;
-  if(lvl===0&&Math.random()<.5)return mv[Math.floor(Math.random()*mv.length)];
-  const depth=lvl===0?1:lvl===1?2:(g.empty>20?3:4);let best=-1e9,pool=[];
-  for(const m of mv){const u=apply(g,m,1);const v=u.gain-negamax(g,depth-1,0,-1e9,1e9)+(lvl===1?Math.random()*1.5:0);undo(g,u,1);
+  /* Dificultad: Crudo regala casi todo, Alegrito se distrae seguido, Prendido piensa 2 jugadas y a veces se le va una. */
+  const rnd=[.7,.25,.12][lvl];if(Math.random()<rnd)return mv[Math.floor(Math.random()*mv.length)];
+  const depth=lvl<2?1:2;let best=-1e9,pool=[];
+  for(const m of mv){const u=apply(g,m,1);const v=u.gain-(depth>1?negamax(g,depth-1,0,-1e9,1e9):0);undo(g,u,1);
     if(v>best+1e-9){best=v;pool=[m]}else if(Math.abs(v-best)<1e-9)pool.push(m)}
   return pool[Math.floor(Math.random()*pool.length)]}
 function gainIf(i){const u=apply(G,i,G.turn);const v=u.gain;undo(G,u,G.turn);return v}
@@ -494,19 +544,26 @@ function play(m,p){
 function maybeBot(){const g=G;if(S.mode!=="bot"||g.over||g.turn!==1||g.busy||g._botT)return;
   g._botT=setTimeout(()=>{g._botT=null;if(g!==G||g.over)return;const m=botMove();play(m,1)},320+Math.random()*260)}
 function end(){
-  saveGame();const g=G,[a,b]=g.score;let t,p,medal=null,next=null;
+  saveGame();const g=G,[a,b]=g.score;let t,p,medal=null,next=null,cup=null,near="";
   if(S.mode==="bot"){
     if(a>b){t="¡Le ganaste al Tío!";p=pick(TXT.win);P.wins++;P.streak++;P.best=Math.max(P.best,P.streak);
       const k=S.shape+"-"+S.lvl;const wasLocked=S.lvl<2&&!unlocked(S.lvl+1);if(!P.medals[k]){P.medals[k]=true;medal=`Medalla ${SHP[S.shape]} · ${LVL[S.lvl]}`}
-      if(S.lvl<2&&wasLocked)next=S.lvl+1;else if(S.lvl<2)next=S.lvl+1}
-    else if(b>a){t="El Tío te la aplicó";p=pick(TXT.lose);P.streak=0}
-    else{t="Empate";p="Ni pa’ ti ni pa’ mí. Así quedamos… por ahora, sobrino."}
+      if(S.lvl<2&&wasLocked)next=S.lvl+1;else if(S.lvl<2)next=S.lvl+1;
+      const had=!!P.coupons[S.lvl];if(!had)P.coupons[S.lvl]={code:cupCode(S.lvl),t:Date.now()};cup={lvl:S.lvl,code:P.coupons[S.lvl].code,had}}
+    else if(b>a){t="El Tío te la aplicó";p=pick(TXT.lose);P.streak=0;P.losses[S.lvl]=(P.losses[S.lvl]||0)+1;
+      near=P.coupons[S.lvl]?`Te faltaron ${b-a+1} puntos. ¡Revancha!`:`Te faltaron ${b-a+1} puntos para tu cupón del ${CUPON_PCT[S.lvl]}%. ¡Ya casi!`}
+    else{t="Empate";p="Ni pa’ ti ni pa’ mí. Así quedamos… por ahora, sobrino.";near=P.coupons[S.lvl]?"":`A un punto de tu cupón del ${CUPON_PCT[S.lvl]}%. ¡Desempata!`}
     saveP()}
   else{const n=NAMES();t=a===b?"Empate":`¡Ganan las ${n[a>b?0:1].toLowerCase()}!`;p=a===b?"Repartan el ponche y otra.":"El que perdió invita los tamales."}
   $("#ovT").textContent=t;$("#ovA").textContent=a;$("#ovB").textContent=b;$("#ovP").textContent=p;
   $("#ovMedal").hidden=!medal;if(medal)$("#ovMedalTxt").textContent=medal+" ganada";
+  $("#ovCup").hidden=!cup;if(cup){$("#ovCupT").textContent=cup.had?"Tu cupón de este nivel (ya lo tenías)":"¡Ganaste tu cupón!";
+    $("#ovCupP").innerHTML=CUPON_PCT[cup.lvl]+'%<small>de descuento</small>';$("#ovCupC").textContent=cup.code;$("#ovCupWa").href=cupWa(cup.lvl,cup.code);
+    if(!cup.had)$("#ovP").textContent=pick(TXT.cupon)}
+  $("#ovNear").hidden=!near;$("#ovNear").textContent=near;
+  $("#rematchBtn").textContent=S.mode==="bot"&&b>=a?"¡Revancha!":"Otra, otra";
   $("#ovStreak").textContent=S.mode==="bot"&&P.streak>1?`Racha: ${P.streak} seguidas`:"";
-  const nb=$("#nextBtn");nb.hidden=next===null;if(next!==null){nb.textContent="Siguiente: Tío "+LVL[next];nb.onclick=()=>{S.lvl=next;setPressed("#lvlChips",`[data-lvl="${next}"]`);$("#over").hidden=true;newGame()}}
+  const nb=$("#nextBtn");nb.hidden=next===null;if(next!==null){nb.textContent=`Siguiente: Tío ${LVL[next]} (cupón ${CUPON_PCT[next]}%)`;nb.onclick=()=>{S.lvl=next;setPressed("#lvlChips",`[data-lvl="${next}"]`);$("#over").hidden=true;newGame()}}
   const msg=S.mode==="bot"?(a>b?`Le gané al Tío Maxi ${a} a ${b} en el Duelo en la Posada (nivel ${LVL[S.lvl]}). ¿Qué controles tienen?`:`El Tío Maxi me ganó ${b} a ${a} en el Duelo en la Posada. Quiero info de consolas y controles.`):"Jugué el Duelo en la Posada. Quiero info de consolas y controles.";
   $("#waLink").href="https://wa.me/523325074001?text="+encodeURIComponent(msg);
   $("#over").hidden=false;sfx(S.mode==="bot"&&b>a?"lose":"win");if(!(S.mode==="bot"&&b>a)){const c=new THREE.Vector3(0,0,0);confetti(c,70,true)}
@@ -522,6 +579,7 @@ const TXT={
   youLoose:["Cerraste dos y dejaste una suelta… yo me encargo de ella.","Dejaste el aguinaldo al aire. Qué generoso, sobrino."],
   idle:["Tranquilo, que con calma se meten mejor… las piezas.","Piénsale bien, que yo ya la tengo bien parada… la jugada.","¿Ya te cansaste? Y apenas vamos empezando."],
   win:["Me ganaste. Ni con caguama te alcanzo.","Me la aplicaste bien bonito. ¿Revancha o te rajas?","Hoy me tocó perder… y a ti te toca invitar."],
+  cupon:["Ándale pues, ahí está tu cupón. Cóbralo antes de que me arrepienta.","Me ganaste limpio… bueno, casi. Ve a cobrar tu descuento.","Tómalo, sobrino. Pero el que sigue no te lo voy a dar tan fácil."],
   lose:["Aquí el que reparte soy yo. ¿Otra o te da pena?","No te agüites, sobrino: al Tío nadie se la gana a la primera.","Te faltó maña… y un buen control. Del de a de veras."]
 };
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
